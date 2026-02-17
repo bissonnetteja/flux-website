@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flux Systems | AI Automation & Strategic Consulting</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           CSS VARIABLES - Flux Systems Glassmorphism
+        ============================================ */
+        :root {
+            --primary: #323952;
+            --accent: #00eafa;
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            
+            --font-display: 'Antonio', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        
+        /* ============================================
+           LOADING SCREEN
+        ============================================ */
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-darker);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loading-logo {
+            height: 60px;
+            margin-bottom: 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .loading-text {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .loading-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+            margin-top: 1rem;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .loading-bar::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 100%;
+            background: var(--accent);
+            animation: loading 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(300%); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        /* ============================================
+           GLASSMORPHISM UTILITIES
+        ============================================ */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        /* ============================================
+           NAVIGATION - Fixed with Transparency
+        ============================================ */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 1.5rem 0;
+        }
+        
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo {
+            height: 40px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+        
+        .logo-text-main {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+        
+        .logo-text-sub {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            letter-spacing: 3px;
+            margin-top: 2px;
+        }
+        
+        .logo-link:hover .logo {
+            opacity: 0.8;
+        }
+        
+        .logo-link:hover .logo-text-main {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .lang-switch {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-switch:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        
+        /* ============================================
+           HERO SECTION - Parallax Background
+        ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: radial-gradient(ellipse at top, rgba(0,234,250,0.03) 0%, transparent 60%),
+                        radial-gradient(ellipse at bottom right, rgba(0,234,250,0.02) 0%, transparent 50%);
+            transform: translateY(0);
+            transition: transform 0.1s ease-out;
+        }
+        
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-eyebrow {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.5s forwards;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.7s forwards;
+        }
+        
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.9s forwards;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 1.1s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .btn-primary {
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0,234,250,0.3);
+        }
+        
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        /* ============================================
+           SERVICES - Glassmorphism Cards
+        ============================================ */
+        .services {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+        
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        
+        .section-eyebrow {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+        
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .service-card {
+            padding: 3rem;
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(0,234,250,0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0,234,250,0.3);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(0,234,250,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: rgba(0,234,250,0.15);
+        }
+        
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        /* ============================================
+           STATS SECTION - Premium Glass Cards
+        ============================================ */
+        .stats {
+            padding: 6rem 2rem;
+            background: radial-gradient(ellipse at center, rgba(0,234,250,0.02) 0%, transparent 70%);
+        }
+        
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        .stat-card {
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0,234,250,0.3);
+        }
+        
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* ============================================
+           CONTACT SECTION
+        ============================================ */
+        .contact {
+            padding: 8rem 2rem;
+        }
+        
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .contact-form {
+            padding: 3rem;
+            border-radius: 20px;
+            margin-top: 3rem;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        
+        input,
+        textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 0 3px rgba(0,234,250,0.1);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        input::placeholder,
+        textarea::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* ============================================
+           FOOTER
+        ============================================ */
+        footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--bg-darker);
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-contact {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .footer-contact a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-contact a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-copy {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.9rem;
+        }
+        
+        /* ============================================
+           SCROLL REVEAL
+        ============================================ */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ============================================
+           RESPONSIVE DESIGN
+        ============================================ */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 4rem;
+            }
+            
+            .founder > div > div {
+                grid-template-columns: 1fr !important;
+                gap: 3rem !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
+                width: 100%;
+                padding: 2rem;
+                transition: left 0.3s ease;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen" id="loadingScreen">
+        <img src="Flux_350x250-Blk.png" alt="Flux Systems" class="loading-logo">
+        <div class="loading-text">Loading</div>
+        <div class="loading-bar"></div>
+    </div>
+    
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo-link">
+                <img src="Flux_350x250-Blk.png" alt="Flux Systems" class="logo" style="display: none;" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
+                <div class="logo-text">
+                    <div class="logo-text-main">FLUX</div>
+                    <div class="logo-text-sub">SYSTEMS</div>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#services" class="nav-link" data-en="Services" data-fr="Services">Services</a></li>
+                <li><a href="#about" class="nav-link" data-en="About" data-fr="À propos">About</a></li>
+                <li><a href="#contact" class="nav-link" data-en="Contact" data-fr="Contact">Contact</a></li>
+                <li><button class="lang-switch" id="langSwitch">FR</button></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-eyebrow" data-en="VOICE-POWERED AUTOMATION" data-fr="AUTOMATISATION PAR VOIX">
+                    VOICE-POWERED AUTOMATION
+                </div>
+                <h1>
+                    <span data-en="From Job Site to Invoice" data-fr="Du Chantier à la Facture">From Job Site to Invoice</span><br>
+                    <span class="gradient-text" data-en="in 60 Seconds" data-fr="en 60 Secondes">in 60 Seconds</span>
+                </h1>
+                <p class="hero-description" data-en="Stop drowning in paperwork. Rough-In turns your voice into structured job logs, invoices, and reports—automatically. Built for trades, powered by AI." 
+                   data-fr="Arrêtez de vous noyer dans la paperasse. Rough-In transforme votre voix en rapports de travail structurés, factures et rapports—automatiquement. Conçu pour les métiers, propulsé par l'IA.">
+                    Stop drowning in paperwork. Rough-In turns your voice into structured job logs, invoices, and reports—automatically. Built for trades, powered by AI.
+                </p>
+                <div class="hero-cta">
+                    <a href="https://calendly.com/bissonnette-ja" target="_blank" class="btn-primary" data-en="Book a Demo" data-fr="Réserver une Démo">Book a Demo</a>
+                    <a href="#services" class="btn-secondary" data-en="See How It Works" data-fr="Voir Comment Ça Fonctionne">See How It Works</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <div class="section-header scroll-reveal">
+                <div class="section-eyebrow" data-en="WHAT WE DO" data-fr="CE QUE NOUS FAISONS">WHAT WE DO</div>
+                <h2 class="section-title" data-en="Automation That Actually Works" data-fr="L'Automatisation Qui Fonctionne Vraiment">Automation That Actually Works</h2>
+                <p class="section-description" data-en="From ready-to-deploy products to custom solutions—we build workflow automation that saves time and makes money." 
+                   data-fr="De produits prêts à déployer aux solutions personnalisées—nous créons l'automatisation de flux de travail qui économise du temps et génère des revenus.">
+                    From ready-to-deploy products to custom solutions—we build workflow automation that saves time and makes money.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card glass-strong scroll-reveal">
+                    <div class="service-icon">👷</div>
+                    <h3 data-en="Rough-In Platform" data-fr="Plateforme Rough-In">Rough-In Platform</h3>
+                    <p data-en="Voice-to-invoice automation built specifically for trades. Speak your job details into Messenger, Telegram, or our webapp—get organized job logs, client tracking, and weekly reports. No typing. No spreadsheets. Just talk." 
+                       data-fr="Automatisation voix-facture conçue spécifiquement pour les métiers. Parlez les détails de votre travail dans Messenger, Telegram ou notre application web—obtenez des rapports de travail organisés, suivi des clients et rapports hebdomadaires. Pas de saisie. Pas de feuilles de calcul. Juste parler.">
+                        Voice-to-invoice automation built specifically for trades. Speak your job details into Messenger, Telegram, or our webapp—get organized job logs, client tracking, and weekly reports. No typing. No spreadsheets. Just talk.
+                    </p>
+                </div>
+                <div class="service-card glass-strong scroll-reveal">
+                    <div class="service-icon">⚡</div>
+                    <h3 data-en="System Optimization" data-fr="Optimisation de Systèmes">System Optimization</h3>
+                    <p data-en="Already using QuickBooks, Excel, or other tools? We don't replace them—we supercharge them. Connect your existing systems into seamless workflows that eliminate double-entry and save hours every week." 
+                       data-fr="Vous utilisez déjà QuickBooks, Excel ou d'autres outils? Nous ne les remplaçons pas—nous les améliorons. Connectez vos systèmes existants en flux de travail fluides qui éliminent la double saisie et économisent des heures chaque semaine.">
+                        Already using QuickBooks, Excel, or other tools? We don't replace them—we supercharge them. Connect your existing systems into seamless workflows that eliminate double-entry and save hours every week.
+                    </p>
+                </div>
+                <div class="service-card glass-strong scroll-reveal">
+                    <div class="service-icon">🔧</div>
+                    <h3 data-en="Custom Workflow Automation" data-fr="Automatisation de Flux Personnalisée">Custom Workflow Automation</h3>
+                    <p data-en="We build solutions like Rough-In for YOUR business. Whether you're in construction, retail, or services—we analyze your processes and automate what's killing your time. Powered by n8n and custom AI agents." 
+                       data-fr="Nous construisons des solutions comme Rough-In pour VOTRE entreprise. Que vous soyez dans la construction, le commerce de détail ou les services—nous analysons vos processus et automatisons ce qui tue votre temps. Propulsé par n8n et agents IA personnalisés.">
+                        We build solutions like Rough-In for YOUR business. Whether you're in construction, retail, or services—we analyze your processes and automate what's killing your time. Powered by n8n and custom AI agents.
+                    </p>
+                </div>
+                <div class="service-card glass-strong scroll-reveal">
+                    <div class="service-icon">📊</div>
+                    <h3 data-en="Business Process Audit" data-fr="Audit de Processus d'Affaires">Business Process Audit</h3>
+                    <p data-en="Where are you bleeding time and money? We map your current workflows, identify bottlenecks, and create a roadmap for automation. See exactly what's costing you before you invest a dollar." 
+                       data-fr="Où perdez-vous du temps et de l'argent? Nous cartographions vos flux de travail actuels, identifions les goulots d'étranglement et créons une feuille de route pour l'automatisation. Voyez exactement ce qui vous coûte avant d'investir un dollar.">
+                        Where are you bleeding time and money? We map your current workflows, identify bottlenecks, and create a roadmap for automation. See exactly what's costing you before you invest a dollar.
+                    </p>
+                </div>
+                <div class="service-card glass-strong scroll-reveal">
+                    <div class="service-icon">⚙️</div>
+                    <h3 data-en="AI Agent Development" data-fr="Développement d'Agents IA">AI Agent Development</h3>
+                    <p data-en="Smart assistants that understand YOUR business context. From job logging to customer follow-ups, we build AI agents that handle repetitive tasks while you focus on growth. Voice-activated, context-aware, always learning." 
+                       data-fr="Assistants intelligents qui comprennent VOTRE contexte d'affaires. De l'enregistrement de travaux aux suivis clients, nous construisons des agents IA qui gèrent les tâches répétitives pendant que vous vous concentrez sur la croissance. Activés par voix, conscients du contexte, toujours en apprentissage.">
+                        Smart assistants that understand YOUR business context. From job logging to customer follow-ups, we build AI agents that handle repetitive tasks while you focus on growth. Voice-activated, context-aware, always learning.
+                    </p>
+                </div>
+                <div class="service-card glass-strong scroll-reveal">
+                    <div class="service-icon">🎓</div>
+                    <h3 data-en="Ongoing Support & Training" data-fr="Soutien Continu et Formation">Ongoing Support & Training</h3>
+                    <p data-en="We don't build and disappear. Your team learns to manage and evolve the system. Includes updates, troubleshooting, and strategic guidance as your business grows. Bilingual support in English and French." 
+                       data-fr="Nous ne construisons pas et disparaissons. Votre équipe apprend à gérer et faire évoluer le système. Comprend mises à jour, dépannage et conseils stratégiques à mesure que votre entreprise grandit. Soutien bilingue en anglais et français.">
+                        We don't build and disappear. Your team learns to manage and evolve the system. Includes updates, troubleshooting, and strategic guidance as your business grows. Bilingual support in English and French.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats" id="about">
+        <div class="stats-container">
+            <div class="section-header scroll-reveal">
+                <div class="section-eyebrow" data-en="PROVEN RESULTS" data-fr="RÉSULTATS PROUVÉS">PROVEN RESULTS</div>
+                <h2 class="section-title" data-en="Built by Trades, For Trades" data-fr="Construit par les Métiers, Pour les Métiers">Built by Trades, For Trades</h2>
+                <p class="section-description" data-en="Real solutions from people who understand your challenges." 
+                   data-fr="Solutions réelles de personnes qui comprennent vos défis.">
+                    Real solutions from people who understand your challenges.
+                </p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card glass scroll-reveal">
+                    <div class="stat-number" data-value="8">8+</div>
+                    <div class="stat-label" data-en="Years in Construction Industry" data-fr="Années dans l'Industrie de la Construction">Years in Construction Industry</div>
+                </div>
+                <div class="stat-card glass scroll-reveal">
+                    <div class="stat-number" data-value="2">2</div>
+                    <div class="stat-label" data-en="Languages Supported (EN/FR)" data-fr="Langues Supportées (EN/FR)">Languages Supported (EN/FR)</div>
+                </div>
+                <div class="stat-card glass scroll-reveal">
+                    <div class="stat-number" data-value="100">100%</div>
+                    <div class="stat-label" data-en="Built on Modern AI & n8n" data-fr="Construit sur IA Moderne & n8n">Built on Modern AI & n8n</div>
+                </div>
+                <div class="stat-card glass scroll-reveal">
+                    <div class="stat-number" data-value="4">4</div>
+                    <div class="stat-label" data-en="Early Adopter Partners" data-fr="Partenaires Adopteurs Précoces">Early Adopter Partners</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDER SECTION -->
+    <section class="founder" style="padding: 8rem 2rem; background: var(--bg-dark);">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center;">
+                <div class="scroll-reveal">
+                    <img src="joel-andre-photo.png" alt="Joel-Andre Bissonnette" style="width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                </div>
+                <div class="scroll-reveal">
+                    <div class="section-eyebrow" data-en="FOUNDER & CEO" data-fr="FONDATEUR & PDG">FOUNDER & CEO</div>
+                    <h2 class="section-title" data-en="Built by Someone Who Gets It" data-fr="Construit par Quelqu'un Qui Comprend">Built by Someone Who Gets It</h2>
+                    <div style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-top: 2rem;">
+                        <p data-en="After 8 years running a plumbing business, I spent too many nights doing paperwork instead of growing my company. Invoices piled up. Follow-ups slipped through. Estimates took days instead of hours." 
+                           data-fr="Après 8 ans à diriger une entreprise de plomberie, j'ai passé trop de soirées à faire de la paperasse au lieu de développer mon entreprise. Les factures s'accumulaient. Les suivis passaient entre les mailles. Les estimations prenaient des jours au lieu d'heures.">
+                            After 8 years running a plumbing business, I spent too many nights doing paperwork instead of growing my company. Invoices piled up. Follow-ups slipped through. Estimates took days instead of hours.
+                        </p>
+                        <p style="margin-top: 1.5rem;" data-en="So I built Rough-In—the tool I wish I had back then." 
+                           data-fr="Alors j'ai construit Rough-In—l'outil que j'aurais aimé avoir à l'époque.">
+                            So I built Rough-In—the tool I wish I had back then.
+                        </p>
+                        <p style="margin-top: 1.5rem;" data-en="Flux Systems combines construction industry experience with world-class automation expertise. We're former tradespeople and developers who got tired of watching small businesses lose money to administrative chaos." 
+                           data-fr="Flux Systems combine l'expérience de l'industrie de la construction avec une expertise d'automatisation de classe mondiale. Nous sommes d'anciens gens de métiers et développeurs fatigués de voir les petites entreprises perdre de l'argent à cause du chaos administratif.">
+                            Flux Systems combines construction industry experience with world-class automation expertise. We're former tradespeople and developers who got tired of watching small businesses lose money to administrative chaos.
+                        </p>
+                        <p style="margin-top: 1.5rem;" data-en="Now we build automation that actually fits how you work. No corporate bloat. No complicated dashboards. Just smart systems that save time and make money." 
+                           data-fr="Maintenant, nous construisons l'automatisation qui s'adapte réellement à votre façon de travailler. Pas de complexité d'entreprise. Pas de tableaux de bord compliqués. Juste des systèmes intelligents qui économisent du temps et génèrent de l'argent.">
+                            Now we build automation that actually fits how you work. No corporate bloat. No complicated dashboards. Just smart systems that save time and make money.
+                        </p>
+                    </div>
+                    <div style="margin-top: 2.5rem; color: var(--text-primary); font-size: 1.2rem; font-weight: 600;">
+                        Joel-Andre Bissonnette
+                    </div>
+                    <div style="color: var(--accent); margin-top: 0.5rem;" data-en="Founder & CEO, Flux Systems" data-fr="Fondateur & PDG, Flux Systems">
+                        Founder & CEO, Flux Systems
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="section-header scroll-reveal">
+                <div class="section-eyebrow" data-en="GET STARTED" data-fr="COMMENCER">GET STARTED</div>
+                <h2 class="section-title" data-en="Ready to Stop Wasting Time?" data-fr="Prêt à Arrêter de Perdre du Temps?">Ready to Stop Wasting Time?</h2>
+                <p class="section-description" data-en="Book a 30-minute demo and see Rough-In in action. Or tell us about your automation challenge—we'll build a custom solution." 
+                   data-fr="Réservez une démo de 30 minutes et voyez Rough-In en action. Ou parlez-nous de votre défi d'automatisation—nous construirons une solution personnalisée.">
+                    Book a 30-minute demo and see Rough-In in action. Or tell us about your automation challenge—we'll build a custom solution.
+                </p>
+            </div>
+            <form class="contact-form glass-strong scroll-reveal" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name" data-en="Name" data-fr="Nom">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-en="Email" data-fr="Courriel">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="company" data-en="Company" data-fr="Entreprise">Company</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="message" data-en="Message / Tell us about your challenge" data-fr="Message / Parlez-nous de votre défi">Message / Tell us about your challenge</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary" data-en="Send Message" data-fr="Envoyer le Message">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/company/flux-systems-inc/" target="_blank">LinkedIn</a>
+                <a href="https://www.facebook.com/share/16z7TSZ78K/" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/flux_systems" target="_blank">Instagram</a>
+            </div>
+            <div class="footer-contact">
+                <a href="mailto:info@fluxsystems.ca">info@fluxsystems.ca</a> | 
+                <a href="tel:+16136064143">1-613-606-4143</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 Flux Systems. <span data-en="All rights reserved." data-fr="Tous droits réservés.">All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // ============================================
+        // LOADING SCREEN
+        // ============================================
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+            }, 1500);
+        });
+        
+        // ============================================
+        // PARALLAX HERO BACKGROUND
+        // ============================================
+        const heroBg = document.getElementById('heroBg');
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+        
+        // ============================================
+        // LANGUAGE SWITCHING
+        // ============================================
+        let currentLang = 'en';
+        const langSwitch = document.getElementById('langSwitch');
+        
+        langSwitch.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'fr' : 'en';
+            langSwitch.textContent = currentLang === 'en' ? 'FR' : 'EN';
+            
+            document.querySelectorAll('[data-en][data-fr]').forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = el.getAttribute(`data-${currentLang}`);
+                } else {
+                    el.textContent = el.getAttribute(`data-${currentLang}`);
+                }
+            });
+            
+            document.documentElement.lang = currentLang;
+        });
+        
+        // ============================================
+        // MOBILE MENU
+        // ============================================
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navbar = document.getElementById('navbar');
+        
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navLinks.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+        
+        // ============================================
+        // NAVBAR SCROLL EFFECT
+        // ============================================
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // ============================================
+        // SCROLL REVEAL
+        // ============================================
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+        
+        // ============================================
+        // ANIMATED COUNTERS
+        // ============================================
+        const animateCounter = (element) => {
+            const target = parseInt(element.getAttribute('data-value'));
+            const suffix = element.textContent.replace(/[0-9]/g, '');
+            let current = 0;
+            const increment = target / 60;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + suffix;
+                }
+            }, 30);
+        };
+        
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const number = entry.target.querySelector('.stat-number');
+                    if (number && number.getAttribute('data-value')) {
+                        animateCounter(number);
+                        statsObserver.unobserve(entry.target);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('.stat-card').forEach(card => {
+            statsObserver.observe(card);
+        });
+        
+        // ============================================
+        // SMOOTH SCROLLING
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // ============================================
+        // FORM SUBMISSION
+        // ============================================
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            const message = currentLang === 'en' 
+                ? `Thank you, ${data.name}! We'll contact you shortly.`
+                : `Merci, ${data.name}! Nous vous contacterons sous peu.`;
+            
+            alert(message);
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
