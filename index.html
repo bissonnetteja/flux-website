@@ -180,68 +180,6 @@
         }
         
         /* ============================================
-           LOADING SCREEN
-        ============================================ */
-        .loading-screen {
-            position: fixed;
-            inset: 0;
-            background: var(--bg-darker);
-            z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        
-        .loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        .loading-logo {
-            height: 60px;
-            margin-bottom: 2rem;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        .loading-text {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-        
-        .loading-bar {
-            width: 200px;
-            height: 2px;
-            background: rgba(255,255,255,0.1);
-            margin-top: 1rem;
-            border-radius: 2px;
-            overflow: hidden;
-        }
-        
-        .loading-bar::after {
-            content: '';
-            display: block;
-            width: 50%;
-            height: 100%;
-            background: var(--accent);
-            animation: loading 1.5s ease-in-out infinite;
-        }
-        
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(300%); }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
-        }
-        
-        /* ============================================
            GLASSMORPHISM UTILITIES
         ============================================ */
         .glass {
@@ -306,7 +244,7 @@
         
         .logo-text-main {
             font-family: var(--font-display);
-            font-size: 2.16rem;
+            font-size: 2.7rem;
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: 1px;
@@ -315,7 +253,7 @@
         
         .logo-text-sub {
             font-family: var(--font-display);
-            font-size: 0.9rem;
+            font-size: 1.125rem;
             font-weight: 400;
             color: var(--text-secondary);
             letter-spacing: 3px;
@@ -945,11 +883,6 @@
 <body>
     
     <!-- LOADING SCREEN -->
-    <div class="loading-screen" id="loadingScreen">
-        <img src="Flux_350x250-Blk.png" alt="Flux Systems" class="loading-logo">
-        <div class="loading-text">Loading</div>
-        <div class="loading-bar"></div>
-    </div>
     
     <!-- NAVIGATION -->
     <nav id="navbar">
@@ -1255,24 +1188,6 @@
 
     <!-- JAVASCRIPT -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // ============================================
-        // LOADING SCREEN
-        // ============================================
-        window.addEventListener('load', () => {
-            const loadingScreen = document.getElementById('loadingScreen');
-            setTimeout(() => {
-                loadingScreen.classList.add('hidden');
-            }, 1500);
-        });
-        
-        // Failsafe: Remove loading screen after 3 seconds no matter what
-        setTimeout(() => {
-            const loadingScreen = document.getElementById('loadingScreen');
-            if (loadingScreen) {
-                loadingScreen.classList.add('hidden');
-            }
-        }, 3000);
-        
         // ============================================
         // PARALLAX HERO BACKGROUND
         // ============================================
