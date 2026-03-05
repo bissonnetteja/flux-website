@@ -59,13 +59,57 @@
         "priceCurrency": "CAD",
         "description": "Monthly subscription with $297 setup fee"
       },
-      "description": "Rough-In is a voice-to-invoice automation platform built specifically for trades. Speak job details into Messenger, Telegram, or our webapp and get organized job logs, client tracking, and weekly reports automatically. Includes an AI assistant with access to Ontario and Quebec building codes for instant on-site code requirement answers."
+      "description": "Rough-In is a voice-to-invoice automation platform built specifically for trades. Speak job details into Messenger, Telegram, or our webapp and get organized job logs, client tracking, and weekly reports automatically. Includes an AI assistant with access to Ontario and Quebec building codes for instant on-site code requirement answers.",
+      "featureList": [
+        "Voice-to-invoice automation",
+        "AI building code assistant for Ontario and Quebec",
+        "Job logging and client tracking",
+        "Weekly reports",
+        "Messenger and Telegram integration"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Flux Systems"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Flux Systems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Flux Systems is a Canadian automation company serving the Ottawa/Gatineau region. Founded by a former plumbing business owner, we build voice-powered workflow automation for trades businesses to eliminate paperwork."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Rough-In?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rough-In is Flux Systems' flagship voice-to-invoice automation platform built specifically for trades. Speak your job details into Messenger, Telegram, or our webapp to automatically capture client information and create organized job logs with weekly reports. It also includes an AI assistant plugged directly into Ontario and Quebec building codes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does Rough-In cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rough-In is currently in beta. Our planned pricing is a $297 setup fee plus $47 per month, which aims to support updates and maintenance. Book a demo with our team to discuss early access."
+          }
+        }
+      ]
     }
     </script>
     
     <style>
         /* ============================================
-           CSS VARIABLES - Flux Systems Glassmorphism
+           CSS VARIABLES 
         ============================================ */
         :root {
             --primary: #323952;
@@ -81,16 +125,8 @@
             --font-body: 'Poppins', sans-serif;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-body);
             color: var(--text-primary);
@@ -99,567 +135,141 @@
             line-height: 1.7;
         }
         
-        /* ============================================
-           GLASSMORPHISM UTILITIES
-        ============================================ */
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-        }
-        
-        .glass-strong {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
+        strong { color: var(--text-primary); font-weight: 600; }
         
         /* ============================================
-           NAVIGATION - Fixed with Transparency
+           UTILITIES & NAVIGATION
         ============================================ */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            padding: 1.5rem 0;
-        }
+        .glass { background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); }
+        .glass-strong { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.15); }
         
-        nav.scrolled {
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 1rem 0;
-        }
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; transition: all 0.3s ease; padding: 1.5rem 0; }
+        nav.scrolled { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 1rem 0; }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo-link { display: flex; align-items: center; text-decoration: none; }
+        .logo-text-main { font-family: var(--font-display); font-size: 2.7rem; font-weight: 700; color: var(--text-primary); letter-spacing: 1px; line-height: 1; }
+        .logo-text-sub { font-family: var(--font-display); font-size: 1.125rem; font-weight: 400; color: var(--text-secondary); letter-spacing: 3px; margin-top: 2px; }
+        .nav-links { display: flex; gap: 3rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-primary); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s ease; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a:hover::after { width: 100%; }
         
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo-link {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-        
-        .logo {
-            height: 40px;
-            transition: opacity 0.3s ease;
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-        }
-        
-        .logo-text-main {
-            font-family: var(--font-display);
-            font-size: 2.7rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: 1px;
-            line-height: 1;
-        }
-        
-        .logo-text-sub {
-            font-family: var(--font-display);
-            font-size: 1.125rem;
-            font-weight: 400;
-            color: var(--text-secondary);
-            letter-spacing: 3px;
-            margin-top: 2px;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .lang-switch {
-            padding: 0.5rem 1rem;
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: var(--font-body);
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .lang-switch:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-        
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .menu-toggle span {
-            width: 25px;
-            height: 2px;
-            background: var(--text-primary);
-            transition: all 0.3s ease;
-        }
+        .lang-switch { padding: 0.5rem 1rem; background: transparent; color: var(--text-primary); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px; cursor: pointer; font-family: var(--font-body); font-weight: 500; transition: all 0.3s ease; }
+        .lang-switch:hover { border-color: var(--accent); color: var(--accent); }
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+        .menu-toggle span { width: 25px; height: 2px; background: var(--text-primary); transition: all 0.3s ease; }
         
         /* ============================================
            HERO SECTION
         ============================================ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 5rem;
-        }
-        
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            background: radial-gradient(ellipse at top, rgba(0,234,250,0.03) 0%, transparent 60%),
-                        radial-gradient(ellipse at bottom right, rgba(0,234,250,0.02) 0%, transparent 50%);
-            transform: translateY(0);
-            transition: transform 0.1s ease-out;
-        }
-        
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-        
-        .hero-content {
-            flex: 1;
-            max-width: 700px;
-        }
-        
-        .hero-eyebrow {
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out 0.5s forwards;
-        }
-        
-        .hero h1 {
-            font-family: var(--font-display);
-            font-size: 4.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            letter-spacing: -2px;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out 0.7s forwards;
-        }
-        
-        .hero h1 .gradient-text {
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-description {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out 0.9s forwards;
-        }
-        
-        .hero-cta {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out 1.1s forwards;
-        }
+        .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 5rem; }
+        .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse at top, rgba(0,234,250,0.03) 0%, transparent 60%), radial-gradient(ellipse at bottom right, rgba(0,234,250,0.02) 0%, transparent 50%); transform: translateY(0); transition: transform 0.1s ease-out; }
+        .hero-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; width: 100%; display: flex; align-items: center; gap: 4rem; }
+        .hero-content { flex: 1; max-width: 700px; }
+        .hero-eyebrow { font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 1.5rem; opacity: 0; animation: fadeInUp 0.8s ease-out 0.5s forwards; }
+        .hero h1 { font-family: var(--font-display); font-size: 4.5rem; font-weight: 700; line-height: 1.1; margin-bottom: 2rem; letter-spacing: -2px; opacity: 0; animation: fadeInUp 0.8s ease-out 0.7s forwards; }
+        .hero h1 .gradient-text { background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-description { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.8; opacity: 0; animation: fadeInUp 0.8s ease-out 0.9s forwards; }
+        .hero-cta { display: flex; gap: 1.5rem; flex-wrap: wrap; opacity: 0; animation: fadeInUp 0.8s ease-out 1.1s forwards; }
 
-        /* High-Contrast Visuals */
-        .hero-visual {
-            flex: 1;
-            position: relative;
-            display: flex;
-            justify-content: flex-end;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 1.2s forwards;
-        }
+        .hero-visual { flex: 1; position: relative; display: flex; justify-content: flex-end; opacity: 0; animation: fadeIn 1s ease-out 1.2s forwards; }
+        .hero-image-frame { width: 100%; max-width: 550px; border-radius: 24px; overflow: hidden; border: 1px solid rgba(0, 234, 250, 0.3); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); transform: rotate(2deg); background: var(--primary); }
+        .hero-image-frame:hover { transform: rotate(0deg); transition: transform 0.4s ease; }
+        
+        .btn-primary { padding: 1rem 2.5rem; background: var(--accent); color: var(--bg-dark); border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(0,234,250,0.3); }
+        .btn-secondary { padding: 1rem 2.5rem; background: transparent; color: var(--text-primary); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; }
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
 
-        .hero-image-frame {
-            width: 100%;
-            max-width: 550px;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 234, 250, 0.3);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            transform: rotate(2deg);
-            background: var(--primary);
-        }
-
-        .hero-image-frame:hover {
-            transform: rotate(0deg);
-            transition: transform 0.4s ease;
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .btn-primary {
-            padding: 1rem 2.5rem;
-            background: var(--accent);
-            color: var(--bg-dark);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(0,234,250,0.3);
-        }
-        
-        .btn-secondary {
-            padding: 1rem 2.5rem;
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-3px);
-        }
-        
         /* ============================================
-           SERVICES - Glassmorphism Cards
+           SERVICES & SCANNABLE LISTS
         ============================================ */
-        .services {
-            padding: 8rem 2rem;
-            position: relative;
-        }
+        .services { padding: 8rem 2rem; position: relative; }
+        .services-container { max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 5rem; }
+        .section-eyebrow { font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
+        .section-title { font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -1px; }
+        .section-description { font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
         
-        .services-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        .service-card { padding: 3rem; border-radius: 16px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; }
+        .product-card { border: 1px solid var(--accent); box-shadow: 0 0 20px rgba(0,234,250,0.05); background: rgba(0, 234, 250, 0.02); }
+        .product-badge { position: absolute; top: -10px; right: 20px; background: var(--accent); color: var(--bg-dark); font-size: 0.75rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 0 0 8px 8px; letter-spacing: 1px; }
+        .service-card:hover { transform: translateY(-10px); border-color: rgba(0,234,250,0.3); }
+        .service-icon { width: 70px; height: 70px; background: transparent; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; transition: all 0.4s ease; }
+        .service-icon img { width: 50px; height: 50px; object-fit: contain; }
+        .service-card:hover .service-icon { transform: scale(1.1) rotate(5deg); }
+        .service-card h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; margin-bottom: 1rem; }
+        .service-card p { color: var(--text-secondary); line-height: 1.7; }
         
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-        
-        .section-eyebrow {
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
-        
-        .section-description {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        
-        .service-card {
-            padding: 3rem;
-            border-radius: 16px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
+        .feature-list { list-style: none; margin: 1.5rem 0; padding: 0; }
+        .feature-list li { position: relative; padding-left: 2rem; margin-bottom: 0.8rem; color: var(--text-secondary); font-size: 0.95rem; }
+        .feature-list li::before { content: '✓'; position: absolute; left: 0; top: -2px; color: var(--accent); font-weight: bold; font-size: 1.2rem; }
+        .hook-text { display: block; margin-top: 1.5rem; font-size: 1.15rem; font-weight: 700; color: var(--text-primary); border-left: 3px solid var(--accent); padding-left: 1rem; }
 
-        /* Product distinct styling */
-        .product-card {
-            border: 1px solid var(--accent);
-            box-shadow: 0 0 20px rgba(0,234,250,0.05);
-            background: rgba(0, 234, 250, 0.02);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--accent);
-            color: var(--bg-dark);
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            letter-spacing: 1px;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top right, rgba(0,234,250,0.05), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .service-card:hover::before { opacity: 1; }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0,234,250,0.3);
-        }
-        
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: transparent;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            transition: all 0.4s ease;
-        }
-        
-        .service-icon img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-        }
-        
-        .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-        
-        .service-card h3 {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .service-card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-        
         /* ============================================
            STATS SECTION
         ============================================ */
-        .stats {
-            padding: 6rem 2rem;
-            background: radial-gradient(ellipse at center, rgba(0,234,250,0.02) 0%, transparent 70%);
-        }
-        
-        .stats-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-        
-        .stat-card {
-            padding: 3rem 2rem;
-            border-radius: 16px;
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0,234,250,0.3);
-        }
-        
-        .stat-number {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-            line-height: 1;
-        }
-        
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
+        .stats { padding: 6rem 2rem; background: radial-gradient(ellipse at center, rgba(0,234,250,0.02) 0%, transparent 70%); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1400px; margin: 0 auto; }
+        .stat-card { padding: 3rem 2rem; border-radius: 16px; text-align: center; transition: all 0.4s ease; }
+        .stat-card:hover { transform: translateY(-5px); border-color: rgba(0,234,250,0.3); }
+        .stat-number { font-family: var(--font-display); font-size: 3.5rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem; line-height: 1; }
+        .stat-label { color: var(--text-secondary); font-size: 0.95rem; }
 
         /* ============================================
-           FOUNDER & CONTACT
+           FOUNDER SECTION
         ============================================ */
         .founder { padding: 8rem 2rem; background: var(--bg-dark); }
+        .founder-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .founder-img { width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+        /* ============================================
+           CONTACT & FORMS
+        ============================================ */
         .contact { padding: 8rem 2rem; }
         .contact-container { max-width: 900px; margin: 0 auto; }
-        
-        .contact-form {
-            padding: 3rem;
-            border-radius: 20px;
-            margin-top: 3rem;
-        }
-        
+        .contact-form { padding: 3rem; border-radius: 20px; margin-top: 3rem; }
         .form-group { margin-bottom: 2rem; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-        
-        input, textarea {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 0 0 3px rgba(0,234,250,0.1);
-        }
-        
+        label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-primary); }
+        input, textarea { width: 100%; padding: 1rem 1.5rem; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 1rem; transition: all 0.3s ease; }
+        input:focus, textarea:focus { outline: none; border-color: var(--accent); background: rgba(255, 255, 255, 0.05); box-shadow: 0 0 0 3px rgba(0,234,250,0.1); }
         textarea { min-height: 150px; resize: vertical; }
-        
+
         /* ============================================
-           FOOTER & FAQ
+           INTERACTIVE FAQ ACCORDION
         ============================================ */
         .faq { padding: 8rem 2rem; background: var(--bg-dark); }
-        .faq-container { max-width: 900px; margin: 0 auto; }
-        .faq-item { margin-bottom: 3rem; }
-        .faq-item h2 {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        .faq-item p { color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; }
-        .faq-item strong { color: var(--accent); font-weight: 600; }
-
-        footer {
-            padding: 3rem 2rem 5rem 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            background: var(--bg-darker);
-        }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 0; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 2rem 0; }
+        .faq-question h3 { font-family: var(--font-body); font-size: 1.2rem; color: var(--text-primary); font-weight: 500; margin: 0; }
+        .faq-icon { font-size: 1.5rem; color: var(--text-secondary); transition: transform 0.3s ease; font-weight: 300; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .faq-answer-content { padding-bottom: 2rem; color: var(--text-secondary); line-height: 1.8; }
         
+        .faq-item.active .faq-icon { transform: rotate(45deg); color: var(--accent); }
+        .faq-item.active .faq-answer { max-height: 600px; }
+
+        /* ============================================
+           FOOTER
+        ============================================ */
+        footer { padding: 3rem 2rem 5rem 2rem; border-top: 1px solid rgba(255, 255, 255, 0.05); background: var(--bg-darker); }
         .footer-container { max-width: 1400px; margin: 0 auto; text-align: center; }
         .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
         .footer-links a, .footer-contact a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease; }
         .footer-links a:hover, .footer-contact a:hover { color: var(--accent); }
         .footer-copy { color: rgba(255, 255, 255, 0.3); font-size: 0.9rem; }
-        
+
         /* ============================================
-           SCROLL REVEAL
+           ANIMATIONS & MOBILE CSS FIXES
         ============================================ */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .scroll-reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
         .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
-        
-        /* ============================================
-           RESPONSIVE DESIGN & MOBILE CTA
-        ============================================ */
         .mobile-sticky-cta { display: none; }
 
         @media (max-width: 1024px) {
@@ -671,38 +281,24 @@
         }
         
         @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                flex-direction: column;
-                background: rgba(10, 10, 10, 0.98);
-                backdrop-filter: blur(20px);
-                width: 100%;
-                padding: 2rem;
-                transition: left 0.3s ease;
-                border-top: 1px solid rgba(255, 255, 255, 0.05);
-            }
+            .nav-links { position: fixed; top: 80px; left: -100%; flex-direction: column; background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(20px); width: 100%; padding: 2rem; transition: left 0.3s ease; border-top: 1px solid rgba(255, 255, 255, 0.05); }
             .nav-links.active { left: 0; }
             .menu-toggle { display: flex; }
             
             .services-grid, .stats-grid, .form-row { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 3rem; }
+            .hero { padding-top: 6rem; }
+            .hero h1 { font-size: 2.8rem; line-height: 1.1; margin-bottom: 1.5rem; }
+            .hero-description { font-size: 1.1rem; }
             .section-title { font-size: 2.5rem; }
             
-            .mobile-sticky-cta {
-                display: flex;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                padding: 1rem;
-                background: rgba(10, 10, 10, 0.95);
-                backdrop-filter: blur(10px);
-                z-index: 999;
-                border-top: 1px solid rgba(0, 234, 250, 0.2);
-                justify-content: center;
-            }
+            .founder-grid { grid-template-columns: 1fr !important; gap: 2rem !important; text-align: center; }
+            .founder-img { max-width: 250px; margin: 0 auto; display: block; }
+            .hook-text { border-left: none; border-top: 3px solid var(--accent); padding-left: 0; padding-top: 1rem; }
+
+            .footer-contact { display: flex; flex-direction: column; gap: 0.8rem; align-items: center; }
+            .footer-contact .divider { display: none; }
+
+            .mobile-sticky-cta { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; padding: 1rem; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); z-index: 999; border-top: 1px solid rgba(0, 234, 250, 0.2); justify-content: center; }
             .mobile-sticky-cta .btn-primary { width: 90%; text-align: center; }
         }
     </style>
@@ -712,7 +308,6 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="logo-link">
-                <img src="Flux_350x250-Transparent.png" alt="Flux Systems" class="logo" style="display: none;" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
                 <div class="logo-text">
                     <div class="logo-text-main">FLUX</div>
                     <div class="logo-text-sub">SYSTEMS</div>
@@ -742,9 +337,9 @@
                     <span data-en="From Job Site to Invoice" data-fr="Du Chantier à la Facture">From Job Site to Invoice</span><br>
                     <span class="gradient-text" data-en="in 60 Seconds" data-fr="en 60 Secondes">in 60 Seconds</span>
                 </h1>
-                <p class="hero-description" data-en="Stop drowning in paperwork. Rough-In turns your voice into structured job logs, invoices, and reports—automatically. Plus, get instant answers to building code questions for Ontario and Quebec right on the job site. Built for trades, powered by AI." 
-                   data-fr="Arrêtez de vous noyer dans la paperasse. Rough-In transforme votre voix en rapports de travail structurés, factures et rapports—automatiquement. De plus, obtenez des réponses instantanées aux questions de code du bâtiment pour l'Ontario et le Québec directement sur le chantier. Conçu pour les métiers, propulsé par l'IA.">
-                    Stop drowning in paperwork. Rough-In turns your voice into structured job logs, invoices, and reports—automatically. Plus, get instant answers to building code questions for Ontario and Quebec right on the job site. Built for trades, powered by AI.
+                <p class="hero-description" data-en="Stop drowning in paperwork. Rough-In turns your voice into structured job logs, invoices, and reports—automatically. Built for trades, powered by AI." 
+                   data-fr="Arrêtez de vous noyer dans la paperasse. Rough-In transforme votre voix en rapports de travail structurés, factures et rapports—automatiquement. Conçu pour les métiers, propulsé par l'IA.">
+                    Stop drowning in paperwork. Rough-In turns your voice into structured job logs, invoices, and reports—automatically. Built for trades, powered by AI.
                 </p>
                 <div class="hero-cta">
                     <a href="https://calendly.com/bissonnette-ja" target="_blank" class="btn-primary" data-en="Book a Demo" data-fr="Réserver une Démo">Book a Demo</a>
@@ -754,7 +349,7 @@
             
             <div class="hero-visual">
                 <div class="hero-image-frame">
-                    <img src="construction-contrast-hero.jpg" alt="Automation on the Job Site" style="width: 100%; display: block; filter: saturate(1.2) contrast(1.1);">
+                    <img src="construction-contrast-hero.jpg" alt="Automation on the Job Site" style="width: 100%; display: block; filter: saturate(1.2) contrast(1.1);" onerror="this.style.display='none'; this.parentElement.style.background='var(--accent)'; this.parentElement.style.opacity='0.2';">
                 </div>
             </div>
         </div>
@@ -778,32 +373,38 @@
                 
                 <div class="service-card product-card scroll-reveal">
                     <div class="product-badge" data-en="FLAGSHIP PLATFORM" data-fr="PLATEFORME PHARE">FLAGSHIP PLATFORM</div>
-                    <div class="service-icon"><img src="Construction_Icon.png" alt="Construction Helmet"></div>
+                    <div class="service-icon"><img src="Construction_Icon_Transparent.png" alt="Construction Helmet" onerror="this.src='Construction_Icon.png'"></div>
                     <h3 data-en="Rough-In Platform" data-fr="Plateforme Rough-In">Rough-In Platform</h3>
-                    <p data-en="Voice-to-invoice automation PLUS an AI assistant plugged into Ontario and Quebec building codes. Speak your job details into Messenger, Telegram, or our webapp—get organized job logs, client tracking, and weekly reports. Need to check code requirements on-site? Just ask. No typing. No searching through manuals. Just talk." 
-                       data-fr="Automatisation voix-facture PLUS un assistant IA connecté aux codes du bâtiment de l'Ontario et du Québec. Parlez les détails de votre travail dans Messenger, Telegram ou notre application web—obtenez des rapports de travail organisés, suivi des clients et rapports hebdomadaires. Besoin de vérifier les exigences du code sur le chantier? Demandez simplement. Pas de saisie. Pas de recherche dans les manuels. Juste parler.">
-                        Voice-to-invoice automation PLUS an AI assistant plugged into Ontario and Quebec building codes. Speak your job details into Messenger, Telegram, or our webapp—get organized job logs, client tracking, and weekly reports. Need to check code requirements on-site? Just ask. No typing. No searching through manuals. Just talk.
+                    <p data-en="Voice-to-invoice automation PLUS an AI assistant plugged into Ontario and Quebec building codes:" 
+                       data-fr="Automatisation voix-facture PLUS un assistant IA connecté aux codes du bâtiment de l'Ontario et du Québec :">
+                        Voice-to-invoice automation PLUS an AI assistant plugged into Ontario and Quebec building codes:
                     </p>
+                    <ul class="feature-list">
+                        <li data-en="Automated job logs & invoices" data-fr="Rapports de travail et factures automatisés">Automated job logs & invoices</li>
+                        <li data-en="Instant building code answers" data-fr="Réponses instantanées au code du bâtiment">Instant building code answers</li>
+                        <li data-en="Client tracking & weekly reports" data-fr="Suivi client et rapports hebdos">Client tracking & weekly reports</li>
+                    </ul>
+                    <span class="hook-text" data-en="No typing. No searching. Just talk." data-fr="Pas de saisie. Pas de recherche. Juste parler.">No typing. No searching. Just talk.</span>
                 </div>
                 
                 <div class="service-card glass-strong scroll-reveal">
                     <div class="service-icon"><img src="lightning-icon.svg" alt="Lightning Bolt"></div>
                     <h3 data-en="System Optimization" data-fr="Optimisation de Systèmes">System Optimization</h3>
-                    <p data-en="Already using QuickBooks, Excel, or other tools? We don't replace them—we supercharge them. Connect your existing systems into seamless workflows that eliminate double-entry and save hours every week." 
-                       data-fr="Vous utilisez déjà QuickBooks, Excel ou d'autres outils? Nous ne les remplaçons pas—nous les améliorons. Connectez vos systèmes existants en flux de travail fluides qui éliminent la double saisie et économisent des heures chaque semaine.">
-                        Already using QuickBooks, Excel, or other tools? We don't replace them—we supercharge them. Connect your existing systems into seamless workflows that eliminate double-entry and save hours every week.
+                    <p data-en="Already using QuickBooks, Excel, or other tools? We don't replace them—we supercharge them. Connect your existing systems into seamless workflows that eliminate double-entry." 
+                       data-fr="Vous utilisez déjà QuickBooks ou Excel? Nous ne les remplaçons pas—nous les améliorons. Connectez vos systèmes en flux de travail fluides qui éliminent la double saisie.">
+                        Already using QuickBooks, Excel, or other tools? We don't replace them—we supercharge them. Connect your existing systems into seamless workflows that eliminate double-entry.
                     </p>
                 </div>
                 
                 <div class="service-card glass-strong scroll-reveal">
-                    <div class="service-icon"><img src="hammer-icon.png" alt="Hammer"></div>
+                    <div class="service-icon"><img src="hammer-icon-transparent.png" alt="Hammer" onerror="this.src='hammer-icon.png'"></div>
                     <h3 data-en="Custom Workflow Automation" data-fr="Automatisation de Flux Personnalisée">Custom Workflow Automation</h3>
-                    <p data-en="We build solutions like Rough-In for YOUR business. Whether you're in construction, retail, or services—we analyze your processes and automate what's killing your time. Powered by n8n and custom AI agents." 
-                       data-fr="Nous construisons des solutions comme Rough-In pour VOTRE entreprise. Que vous soyez dans la construction, le commerce de détail ou les services—nous analysons vos processus et automatisons ce qui tue votre temps. Propulsé par n8n et agents IA personnalisés.">
-                        We build solutions like Rough-In for YOUR business. Whether you're in construction, retail, or services—we analyze your processes and automate what's killing your time. Powered by n8n and custom AI agents.
+                    <p data-en="We build solutions for YOUR business. We analyze your processes and automate what's killing your time. Powered by n8n and custom AI agents." 
+                       data-fr="Nous construisons des solutions pour VOTRE entreprise. Nous analysons vos processus et automatisons ce qui tue votre temps. Propulsé par n8n et agents IA.">
+                        We build solutions for YOUR business. We analyze your processes and automate what's killing your time. Powered by n8n and custom AI agents.
                     </p>
                 </div>
-                
+
                 <div class="service-card glass-strong scroll-reveal">
                     <div class="service-icon"><img src="chart-icon.svg" alt="Bar Chart"></div>
                     <h3 data-en="Business Process Audit" data-fr="Audit de Processus d'Affaires">Business Process Audit</h3>
@@ -834,66 +435,57 @@
         </div>
     </section>
 
-    <section class="stats" id="about">
-        <div class="stats-container">
-            <div class="section-header scroll-reveal">
-                <div class="section-eyebrow" data-en="PROVEN RESULTS" data-fr="RÉSULTATS PROUVÉS">PROVEN RESULTS</div>
-                <h2 class="section-title" data-en="Built by Trades, For Trades" data-fr="Construit par les Métiers, Pour les Métiers">Built by Trades, For Trades</h2>
-                <p class="section-description" data-en="Real solutions from people who understand your challenges." 
-                   data-fr="Solutions réelles de personnes qui comprennent vos défis.">
-                    Real solutions from people who understand your challenges.
-                </p>
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-card glass scroll-reveal">
+                <div class="stat-number" data-value="8">8+</div>
+                <div class="stat-label" data-en="Years in Construction" data-fr="Années dans la Construction">Years in Construction</div>
             </div>
-            <div class="stats-grid">
-                <div class="stat-card glass scroll-reveal">
-                    <div class="stat-number" data-value="8">8+</div>
-                    <div class="stat-label" data-en="Years in Construction Industry" data-fr="Années dans l'Industrie de la Construction">Years in Construction Industry</div>
-                </div>
-                <div class="stat-card glass scroll-reveal">
-                    <div class="stat-number" data-value="2">2</div>
-                    <div class="stat-label" data-en="Languages Supported (EN/FR)" data-fr="Langues Supportées (EN/FR)">Languages Supported (EN/FR)</div>
-                </div>
-                <div class="stat-card glass scroll-reveal">
-                    <div class="stat-number" data-value="100">100%</div>
-                    <div class="stat-label" data-en="Built on Modern AI & n8n" data-fr="Construit sur IA Moderne & n8n">Built on Modern AI & n8n</div>
-                </div>
-                <div class="stat-card glass scroll-reveal">
-                    <div class="stat-number" data-value="4">4</div>
-                    <div class="stat-label" data-en="Early Adopter Partners" data-fr="Partenaires Adopteurs Précoces">Early Adopter Partners</div>
-                </div>
+            <div class="stat-card glass scroll-reveal">
+                <div class="stat-number" data-value="2">2</div>
+                <div class="stat-label" data-en="Languages (EN/FR)" data-fr="Langues Supportées (EN/FR)">Languages (EN/FR)</div>
+            </div>
+            <div class="stat-card glass scroll-reveal">
+                <div class="stat-number" data-value="100">100%</div>
+                <div class="stat-label" data-en="Built on Modern AI" data-fr="Construit sur l'IA Moderne">Built on Modern AI</div>
+            </div>
+            <div class="stat-card glass scroll-reveal">
+                <div class="stat-number" data-value="4">4</div>
+                <div class="stat-label" data-en="Early Adopters" data-fr="Adopteurs Précoces">Early Adopters</div>
             </div>
         </div>
     </section>
 
-    <section class="founder">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center;">
-                <div class="scroll-reveal">
-                    <img src="joel-andre-photo.png" alt="Joel-Andre Bissonnette" style="width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+    <section class="founder" id="about">
+        <div class="founder-grid">
+            <div class="scroll-reveal">
+                <img src="joel-andre-photo.png" alt="Joel-Andre Bissonnette" class="founder-img" onerror="this.style.display='none'">
+            </div>
+            <div class="scroll-reveal">
+                <div class="section-eyebrow" data-en="FOUNDER & CEO" data-fr="FONDATEUR & PDG">FOUNDER & CEO</div>
+                <h2 class="section-title" data-en="Built by Someone Who Gets It" data-fr="Construit par Quelqu'un Qui Comprend">Built by Someone Who Gets It</h2>
+                <div style="color: var(--text-secondary); font-size: 1.15rem; line-height: 1.8; margin-top: 2rem;">
+                    
+                    <p data-en="After 8 years running a plumbing business, I spent <strong>too many nights doing paperwork</strong> instead of growing my company. Invoices piled up. Follow-ups slipped through. <strong>Estimates took days instead of hours.</strong>" 
+                       data-fr="Après 8 ans à diriger une entreprise de plomberie, j'ai passé <strong>trop de soirées à faire de la paperasse</strong> au lieu de développer mon entreprise. Les factures s'accumulaient. <strong>Les estimations prenaient des jours au lieu d'heures.</strong>">
+                        After 8 years running a plumbing business, I spent <strong>too many nights doing paperwork</strong> instead of growing my company. Invoices piled up. Follow-ups slipped through. <strong>Estimates took days instead of hours.</strong>
+                    </p>
+                    
+                    <p style="margin-top: 1.5rem;" data-en="So I built Rough-In—the tool I wish I had back then." 
+                       data-fr="Alors j'ai construit Rough-In—l'outil que j'aurais aimé avoir à l'époque.">
+                        So I built Rough-In—the tool I wish I had back then.
+                    </p>
+
+                    <p style="margin-top: 1.5rem;" data-en="Flux Systems combines construction industry experience with world-class automation expertise. We're former tradespeople and developers who got tired of watching small businesses <strong>lose money to administrative chaos.</strong>" 
+                       data-fr="Flux Systems combine l'expérience de l'industrie de la construction avec une expertise d'automatisation de classe mondiale. Nous sommes d'anciens gens de métiers fatigués de voir les petites entreprises <strong>perdre de l'argent à cause du chaos administratif.</strong>">
+                        Flux Systems combines construction industry experience with world-class automation expertise. We're former tradespeople and developers who got tired of watching small businesses <strong>lose money to administrative chaos.</strong>
+                    </p>
                 </div>
-                <div class="scroll-reveal">
-                    <div class="section-eyebrow" data-en="FOUNDER & CEO" data-fr="FONDATEUR & PDG">FOUNDER & CEO</div>
-                    <h2 class="section-title" data-en="Built by Someone Who Gets It" data-fr="Construit par Quelqu'un Qui Comprend">Built by Someone Who Gets It</h2>
-                    <div style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8; margin-top: 2rem;">
-                        <p data-en="After 8 years running a plumbing business, I spent too many nights doing paperwork instead of growing my company. Invoices piled up. Follow-ups slipped through. Estimates took days instead of hours." 
-                           data-fr="Après 8 ans à diriger une entreprise de plomberie, j'ai passé trop de soirées à faire de la paperasse au lieu de développer mon entreprise. Les factures s'accumulaient. Les suivis passaient entre les mailles. Les estimations prenaient des jours au lieu d'heures.">
-                            After 8 years running a plumbing business, I spent too many nights doing paperwork instead of growing my company. Invoices piled up. Follow-ups slipped through. Estimates took days instead of hours.
-                        </p>
-                        <p style="margin-top: 1.5rem;" data-en="So I built Rough-In—the tool I wish I had back then." 
-                           data-fr="Alors j'ai construit Rough-In—l'outil que j'aurais aimé avoir à l'époque.">
-                            So I built Rough-In—the tool I wish I had back then.
-                        </p>
-                        <p style="margin-top: 1.5rem;" data-en="Flux Systems combines construction industry experience with world-class automation expertise. We're former tradespeople and developers who got tired of watching small businesses lose money to administrative chaos." 
-                           data-fr="Flux Systems combine l'expérience de l'industrie de la construction avec une expertise d'automatisation de classe mondiale. Nous sommes d'anciens gens de métiers et développeurs fatigués de voir les petites entreprises perdre de l'argent à cause du chaos administratif.">
-                            Flux Systems combines construction industry experience with world-class automation expertise. We're former tradespeople and developers who got tired of watching small businesses lose money to administrative chaos.
-                        </p>
-                    </div>
-                    <div style="margin-top: 2.5rem; color: var(--text-primary); font-size: 1.2rem; font-weight: 600;">
-                        Joel-Andre Bissonnette
-                    </div>
-                    <div style="color: var(--accent); margin-top: 0.5rem;" data-en="Founder & CEO, Flux Systems" data-fr="Fondateur & PDG, Flux Systems">
-                        Founder & CEO, Flux Systems
-                    </div>
+                <div style="margin-top: 2.5rem; color: var(--text-primary); font-size: 1.2rem; font-weight: 600;">
+                    Joel-Andre Bissonnette
+                </div>
+                <div style="color: var(--accent); margin-top: 0.5rem;" data-en="Founder & CEO, Flux Systems" data-fr="Fondateur & PDG, Flux Systems">
+                    Founder & CEO, Flux Systems
                 </div>
             </div>
         </div>
@@ -904,11 +496,8 @@
             <div class="section-header scroll-reveal">
                 <div class="section-eyebrow" data-en="GET STARTED" data-fr="COMMENCER">GET STARTED</div>
                 <h2 class="section-title" data-en="Ready to Stop Wasting Time?" data-fr="Prêt à Arrêter de Perdre du Temps?">Ready to Stop Wasting Time?</h2>
-                <p class="section-description" data-en="Book a 30-minute demo and see Rough-In in action. Or tell us about your automation challenge—we'll build a custom solution." 
-                   data-fr="Réservez une démo de 30 minutes et voyez Rough-In en action. Ou parlez-nous de votre défi d'automatisation—nous construirons une solution personnalisée.">
-                    Book a 30-minute demo and see Rough-In in action. Or tell us about your automation challenge—we'll build a custom solution.
-                </p>
             </div>
+            
             <form class="contact-form glass-strong scroll-reveal" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="contact">
                 <input type="hidden" name="bot-field" style="display:none">
@@ -927,7 +516,7 @@
                     <input type="text" id="company" name="company">
                 </div>
                 <div class="form-group">
-                    <label for="message" data-en="Message / Tell us about your challenge" data-fr="Message / Parlez-nous de votre défi">Message / Tell us about your challenge</label>
+                    <label for="message" data-en="Message / Challenge" data-fr="Message / Votre défi">Message / Challenge</label>
                     <textarea id="message" name="message" required></textarea>
                 </div>
                 <button type="submit" class="btn-primary" data-en="Send Message" data-fr="Envoyer le Message">Send Message</button>
@@ -938,32 +527,46 @@
     <section class="faq" id="faq">
         <div class="faq-container">
             <div class="section-header scroll-reveal">
-                <div class="section-eyebrow" data-en="FREQUENTLY ASKED QUESTIONS" data-fr="QUESTIONS FRÉQUENTES">FREQUENTLY ASKED QUESTIONS</div>
+                <div class="section-eyebrow" data-en="FAQ" data-fr="FAQ">FAQ</div>
                 <h2 class="section-title" data-en="Everything You Need to Know" data-fr="Tout Ce Que Vous Devez Savoir">Everything You Need to Know</h2>
             </div>
             
-            <div class="faq-item scroll-reveal">
-                <h2 data-en="What is Flux Systems?" data-fr="Qu'est-ce que Flux Systems?">What is Flux Systems?</h2>
-                <p data-en="Flux Systems is an automation company serving the Ottawa/Gatineau region. Founded by a former plumbing business owner, we build voice-powered workflow automation for trades businesses to eliminate paperwork." 
-                   data-fr="Flux Systems est une entreprise d'automatisation desservant la région d'Ottawa/Gatineau. Fondée par un ancien propriétaire d'entreprise de plomberie, nous créons de l'automatisation par voix pour les métiers afin d'éliminer la paperasse.">
-                    Flux Systems is an automation company serving the Ottawa/Gatineau region. Founded by a former plumbing business owner, we build voice-powered workflow automation for trades businesses to eliminate paperwork.
-                </p>
-            </div>
-            
-            <div class="faq-item scroll-reveal">
-                <h2 data-en="How much does Rough-In cost?" data-fr="Combien coûte Rough-In?">How much does Rough-In cost?</h2>
-                <p data-en="Rough-In is currently in beta. Our planned pricing is a $297 setup fee plus $47 per month, which aims to support updates and maintenance. Book a demo with our team to discuss early access." 
-                   data-fr="Rough-In est actuellement en version bêta. Notre tarification prévue est de 297 $ de frais de configuration plus 47 $ par mois, ce qui vise à soutenir les mises à jour. Réservez une démo pour discuter de l'accès anticipé.">
-                    Rough-In is currently in beta. Our planned pricing is a $297 setup fee plus $47 per month, which aims to support updates and maintenance. Book a demo with our team to discuss early access.
-                </p>
-            </div>
+            <div class="faq-list">
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question">
+                        <h3 data-en="What is Flux Systems?" data-fr="Qu'est-ce que Flux Systems?">What is Flux Systems?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content" data-en="Flux Systems is an automation company serving the Ottawa/Gatineau region. Founded by a former plumbing business owner, we build voice-powered workflow automation for trades businesses to eliminate paperwork." data-fr="Flux Systems est une entreprise d'automatisation desservant la région d'Ottawa/Gatineau. Fondée par un ancien propriétaire d'entreprise de plomberie, nous créons de l'automatisation par voix pour les métiers afin d'éliminer la paperasse.">
+                            Flux Systems is an automation company serving the Ottawa/Gatineau region. Founded by a former plumbing business owner, we build voice-powered workflow automation for trades businesses to eliminate paperwork.
+                        </div>
+                    </div>
+                </div>
 
-            <div class="faq-item scroll-reveal">
-                <h2 data-en="Is Flux Systems available in both English and French?" data-fr="Flux Systems est-il disponible en anglais et en français?">Is Flux Systems available in both English and French?</h2>
-                <p data-en="Yes! Operating in the Ottawa/Gatineau region requires it. Flux Systems provides full support in both languages." 
-                   data-fr="Oui! Opérer dans la région d'Ottawa/Gatineau l'exige. Flux Systems offre un soutien complet dans les deux langues.">
-                    Yes! Operating in the Ottawa/Gatineau region requires it. Flux Systems provides full support in both languages.
-                </p>
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question">
+                        <h3 data-en="What is Rough-In?" data-fr="Qu'est-ce que Rough-In?">What is Rough-In?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content" data-en="Rough-In is Flux Systems' flagship voice-to-invoice automation platform built specifically for trades. Speak your job details into Messenger, Telegram, or our webapp to automatically capture client information and create organized job logs with weekly reports. It also includes an AI assistant plugged directly into Ontario and Quebec building codes." data-fr="Rough-In est la plateforme phare de Flux Systems, conçue pour les métiers. Parlez les détails de votre travail dans Messenger, Telegram ou notre application web pour capturer automatiquement les informations client et créer des rapports de travail avec rapports hebdomadaires. Il comprend également un assistant IA connecté directement aux codes du bâtiment de l'Ontario et du Québec.">
+                            Rough-In is Flux Systems' flagship voice-to-invoice automation platform built specifically for trades. Speak your job details into Messenger, Telegram, or our webapp to automatically capture client information and create organized job logs with weekly reports. It also includes an AI assistant plugged directly into Ontario and Quebec building codes.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-reveal">
+                    <div class="faq-question">
+                        <h3 data-en="How much does Rough-In cost?" data-fr="Combien coûte Rough-In?">How much does Rough-In cost?</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content" data-en="Rough-In is currently in beta. Our planned pricing is a $297 setup fee plus $47 per month, which aims to support updates and maintenance. Book a demo with our team to discuss early access." data-fr="Rough-In est actuellement en version bêta. Notre tarification prévue est de 297 $ de frais de configuration plus 47 $ par mois, ce qui vise à soutenir les mises à jour. Réservez une démo pour discuter de l'accès anticipé.">
+                            Rough-In is currently in beta. Our planned pricing is a $297 setup fee plus $47 per month, which aims to support updates and maintenance. Book a demo with our team to discuss early access.
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -976,7 +579,8 @@
                 <a href="https://www.instagram.com/flux_systems" target="_blank">Instagram</a>
             </div>
             <div class="footer-contact">
-                <a href="mailto:info@fluxsystems.ca">info@fluxsystems.ca</a> | 
+                <a href="#" id="email-link">Email Us</a>
+                <span class="divider"> | </span> 
                 <a href="tel:+16136064143">1-613-606-4143</a>
             </div>
             <p class="footer-copy">&copy; 2026 Flux Systems. <span data-en="All rights reserved." data-fr="Tous droits réservés.">All rights reserved.</span></p>
@@ -984,18 +588,23 @@
     </footer>
 
     <script>
-        // ============================================
-        // PARALLAX HERO BACKGROUND
-        // ============================================
+        // Hero Parallax
         const heroBg = document.getElementById('heroBg');
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
         });
+
+        // Email Obfuscator Decoder
+        document.addEventListener("DOMContentLoaded", function() {
+            const user = "info";
+            const domain = "fluxsystems.ca";
+            const el = document.getElementById("email-link");
+            el.href = "mailto:" + user + "@" + domain;
+            el.textContent = user + "@" + domain;
+        });
         
-        // ============================================
-        // BILINGUAL LANGUAGE & SEO SWITCHING
-        // ============================================
+        // Bilingual Switcher + SEO Meta Update
         let currentLang = 'en';
         const langSwitch = document.getElementById('langSwitch');
         const metaDesc = document.querySelector('meta[name="description"]');
@@ -1004,17 +613,17 @@
             currentLang = currentLang === 'en' ? 'fr' : 'en';
             langSwitch.textContent = currentLang === 'en' ? 'FR' : 'EN';
             
-            // Update on-page text and placeholders
             document.querySelectorAll('[data-en][data-fr]').forEach(el => {
                 if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                     el.placeholder = el.getAttribute(`data-${currentLang}`);
+                } else if (el.innerHTML.includes('<span') || el.innerHTML.includes('<strong') || el.innerHTML.includes('<img')) {
+                    el.innerHTML = el.getAttribute(`data-${currentLang}`);
                 } else {
                     el.textContent = el.getAttribute(`data-${currentLang}`);
                 }
             });
-            
-            // Update Document Lang and SEO Meta Tags dynamically
             document.documentElement.lang = currentLang;
+
             if(currentLang === 'fr') {
                 document.title = "Flux Systems | Automatisation IA & Consultation Stratégique";
                 if(metaDesc) metaDesc.content = "Flux Systems crée de l'automatisation par voix pour les métiers. Notre produit, Rough-In, transforme les détails de chantier en factures en 60 secondes.";
@@ -1024,9 +633,7 @@
             }
         });
         
-        // ============================================
-        // MOBILE MENU
-        // ============================================
+        // Mobile Menu
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         const navbar = document.getElementById('navbar');
@@ -1037,52 +644,30 @@
         });
         
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
         
-        document.addEventListener('click', (e) => {
-            if (!navbar.contains(e.target) && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-            }
-        });
-        
-        // ============================================
-        // NAVBAR SCROLL EFFECT
-        // ============================================
+        // Navbar Scroll
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
         });
         
-        // ============================================
-        // SCROLL REVEAL
-        // ============================================
+        // Scroll Reveal
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('revealed');
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
         
-        document.querySelectorAll('.scroll-reveal').forEach(el => {
-            revealObserver.observe(el);
-        });
+        document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
         
-        // ============================================
-        // ANIMATED COUNTERS
-        // ============================================
+        // Animated Stats Counter
         const animateCounter = (element) => {
             const target = parseInt(element.getAttribute('data-value'));
             const suffix = element.textContent.replace(/[0-9]/g, '');
             let current = 0;
             const increment = target / 60;
-            
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
@@ -1109,31 +694,37 @@
         document.querySelectorAll('.stat-card').forEach(card => {
             statsObserver.observe(card);
         });
-        
-        // ============================================
-        // SMOOTH SCROLLING
-        // ============================================
+
+        // FAQ Accordion Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-icon').textContent = '+';
+                });
+                if (!isActive) {
+                    item.classList.add('active');
+                    item.querySelector('.faq-icon').textContent = '−';
+                }
+            });
+        });
+
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+                if (target) window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
             });
         });
         
-        // ============================================
-        // FORM SUBMISSION - Netlify Forms
-        // ============================================
+        // Netlify Form Submission
         const contactForm = document.getElementById('contactForm');
-        
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
             const submitBtn = contactForm.querySelector('.btn-primary');
             const originalText = submitBtn.textContent;
             
@@ -1143,7 +734,6 @@
             
             try {
                 const formData = new FormData(contactForm);
-                
                 const response = await fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -1151,27 +741,23 @@
                 });
                 
                 if (response.ok) {
-                    submitBtn.textContent = currentLang === 'en' ? '✓ Message Sent!' : '✓ Message Envoyé!';
+                    submitBtn.textContent = currentLang === 'en' ? '✓ Sent!' : '✓ Envoyé!';
                     submitBtn.style.background = '#00eafa';
                     submitBtn.style.color = '#0a0a0a';
                     submitBtn.style.opacity = '1';
                     contactForm.reset();
-                    
                     setTimeout(() => {
                         submitBtn.textContent = originalText;
                         submitBtn.style.background = '';
                         submitBtn.style.color = '';
                         submitBtn.disabled = false;
                     }, 4000);
-                } else {
-                    throw new Error('Form submission failed');
-                }
+                } else throw new Error('Failed');
             } catch (error) {
-                submitBtn.textContent = currentLang === 'en' ? 'Error - Try Again' : 'Erreur - Réessayer';
+                submitBtn.textContent = currentLang === 'en' ? 'Error' : 'Erreur';
                 submitBtn.style.background = '#ff4444';
                 submitBtn.style.color = '#fff';
                 submitBtn.style.opacity = '1';
-                
                 setTimeout(() => {
                     submitBtn.textContent = originalText;
                     submitBtn.style.background = '';
